@@ -1,2 +1,5 @@
+__pycache__/
+
 /meteo_analysis/data/*
 /opensky_api/data/*
+/population_analysis/data/*

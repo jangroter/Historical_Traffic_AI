@@ -1,10 +1,14 @@
 from pyopensky.trino import Trino
-from datetime import datetime
-trino = Trino()
 
-start = 1699276083 
-end = 1699276083+(3600*1) 
+def download_data(start, stop, arrival_airport='EHAM', bounds=(2,49,8,54), save=False, file_name=None):
+    trino = Trino()
+    if file_name == None:
+        file_name = f'{start}_{stop}_{arrival_airport}.csv'
+    
+    history = trino.history(start=start, stop=stop, arrival_airport=arrival_airport, bounds=bounds)
 
-history = trino.history(start=start,stop=end, arrival_airport='EHAM',bounds=(2,49,8,54))
+    if save:
+        history.to_csv(file_name)
 
-history.to_csv('flights_sample_24_hours.csv')
+    return history
+

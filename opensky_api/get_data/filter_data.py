@@ -6,14 +6,14 @@ from traffic.data import aircraft
 pd.set_option('future.no_silent_downcasting', True)
 
 def filter_data(data = None, file_name = None, sample_rate = '10s'):
-    if data == None:
+    if data is None:
         try:
             data = pd.read_csv(file_name)
         except FileNotFoundError:
             print('If no data is provided, an exisiting path to the data as .csv should be given')
             sys.exit(1)
-    ac = pd.DataFrame(aircraft.data)[["icao24", "typecode"]]
-    data = data.merge(ac)
+    # ac = pd.DataFrame(aircraft.data)[["icao24", "typecode"]]
+    # data = data.merge(ac)
 
     data = data.rename(
         columns={
@@ -45,5 +45,5 @@ def filter_data(data = None, file_name = None, sample_rate = '10s'):
     traffic.data = traffic.data.reset_index()
     traffic = traffic.drop(traffic.data.index[traffic.data.altitude.isna()].tolist())
     traffic.data = traffic.data.set_index('index')
-    
+
     return traffic

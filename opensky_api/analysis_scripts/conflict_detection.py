@@ -21,8 +21,8 @@ class BlueSky_Traffic:
         self.vs = vs
         self.trk = trk
 
-def get_conflict_data(traffic, summary=None, r=5000, vzh=300, tlook=1000, save=False, file_name='conflict.csv'):
-    if summary == None:
+def get_conflict_data(traffic, summary=None, r=9260, vzh=300, tlook=1000, save=False, file_name='conflict.csv'):
+    if summary is None:
         summary = traffic.summary(['icao24','callsign']).eval()
     df = traffic.data
     df = df.sort_values('timestamp')

@@ -3,7 +3,7 @@ import pandas as pd
 pd.set_option('future.no_silent_downcasting', True)
 
 def overlay_pathlength_data(traffic, summary = None):
-    if summary == None:
+    if summary is None:
         summary = traffic.summary(['icao24','callsign']).eval()
 
     traffic = traffic.cumulative_distance().eval()

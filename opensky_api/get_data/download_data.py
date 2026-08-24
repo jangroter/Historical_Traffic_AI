@@ -1,6 +1,6 @@
 from pyopensky.trino import Trino
 
-def download_data(start, stop, arrival_airport='EHAM', bounds=(2,49,8,54), save=False, file_name=None):
+def download_data(start, stop, arrival_airport='EHAM', bounds=(0,48,10,56), save=False, file_name=None):
     trino = Trino()
     if file_name == None:
         file_name = f'{start}_{stop}_{arrival_airport}.csv'
